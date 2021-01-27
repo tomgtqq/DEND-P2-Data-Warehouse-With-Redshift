@@ -33,11 +33,16 @@ A music streaming startup, Sparkify, has grown their user base and song database
 
 Building an ETL pipeline that extracts their data from S3, stages them in Redshift, and transforms data into a set of dimensional tables for their analytics team to continue finding insights in what songs their users are listening to. 
 
+### Fact table and Dimension table with star schemas
 ![Star Schemas](./assets/star_schemas.png)
 
+### Aginity for debug SQL queries 
+![debug](./assets/debug.jpg)
+
+### Data quality checks by Aginity
+![checking](./assets/checking.jpg)
 
 ## File Descriptions <a name="files"></a>
-
 
 ```
 - sql_queries.py # sql 
