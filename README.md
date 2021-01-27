@@ -19,7 +19,6 @@ Build an Data Warehouse using Python on AWS Redshift And Copy Data from S3 bucke
 # Requires the latest pip
 pip3 install -U pip
 pip3 install pyscopg2
-pip3 install configparser
 ```
 
 
