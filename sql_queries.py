@@ -168,7 +168,7 @@ WHERE
 user_table_insert = ("""
 INSERT INTO users (user_id, first_name, last_name, gender, level)
 SELECT DISTINCT
-    CAST(userId AS INTEGER),
+    CAST(userId AS INTEGER) AS user_id,
     firstName,
     lastName,
     gender,
@@ -193,7 +193,6 @@ FROM
     staging_songs
 WHERE
     song_id NOT IN (SELECT DISTINCT song_id FROM songs)
-
 """)
 
 # keep unique record with artist_id
@@ -216,11 +215,12 @@ time_table_insert = ("""
 INSERT INTO time (start_time, hour, day, week, month, year, weekday)
 SELECT
     ts,
-    EXTRACT(hr FROM ts),
-    EXTRACT(d FROM ts),
-    EXTRACT(w FROM ts),
-    EXTRACT(mon FROM ts),
-    EXTRACT(yr FROM ts)
+    EXTRACT(hr FROM ts) AS hour,
+    EXTRACT(d FROM ts) AS day,
+    EXTRACT(w FROM ts) AS week,
+    EXTRACT(mon FROM ts) AS month,
+    EXTRACT(yr FROM ts) AS year,
+    EXTRACT(weekday FROM ts) AS weekday
 FROM
     (
         SELECT DISTINCT TIMESTAMP 'epoch' + ts/1000 * INTERVAL '1 second' as ts
