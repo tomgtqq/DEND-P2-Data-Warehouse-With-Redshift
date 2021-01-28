@@ -139,7 +139,7 @@ staging_songs_copy = ("""
 # FINAL TABLES
 songplay_table_insert = ("""
 INSERT INTO songplays (user_id, song_id, artist_id, start_time, session_id, user_agent, level, location)
-SELECT DISTINCT
+SELECT
     e.userId,
     s.song_id,
     s.artist_id,
